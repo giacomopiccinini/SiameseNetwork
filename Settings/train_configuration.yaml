@@ -1,0 +1,8 @@
+# Specify the batch size
+BATCH_SIZE:  64
+
+# Specify number of epochs
+EPOCHS: 100
+
+# Specify path where the train model will be stored
+MODEL_PATH: Model/siamese_model.hdf5
