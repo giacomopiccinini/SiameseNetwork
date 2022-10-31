@@ -3,8 +3,8 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Input
 from tensorflow.keras.layers import Lambda
 
-from Code.Networks.Architectures.architectures import SisterNetwork
-from Code.Networks.Distances.euclidean import euclidean_distance
+from Code.Network.sister import SisterNetwork
+from Code.Metrics.euclidean import euclidean_distance
 
 
 def SiameseNetwork():
