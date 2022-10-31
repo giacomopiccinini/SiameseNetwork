@@ -26,9 +26,6 @@ def track(args):
         project_name=args["Project"].project, log_code=False, auto_output_logging=False
     )
 
-    # Add tag
-    experiment.add_tag(args["Project"].feature)
-
     # Log hyperparameters
     experiment.log_parameters(hyperparameters)
 
