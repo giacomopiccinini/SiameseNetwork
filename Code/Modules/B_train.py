@@ -1,11 +1,8 @@
-import tensorflow as tf
 import os
+import tensorflow as tf
 
-from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, TensorBoard
-
-from Code.Networks.SiameseNetwork.siamese import SiameseNetwork
+from Code.Networks.siamese import SiameseNetwork
 from Code.Modules.A_load_data import load_data
-from Code.Utilities.loading_utils import load
 
 
 def train():
