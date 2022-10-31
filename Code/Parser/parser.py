@@ -82,6 +82,42 @@ def parse():
         help="Integer for y-dimension of  pooling kernel",
     )
 
+    parser.add_argument(
+        "--test_size",
+        const=0.2,
+        default=0.2,
+        nargs="?",
+        type=float,
+        help="Float in (0,1) representing the percentage of sample to be kept for testing",
+    )
+
+    parser.add_argument(
+        "--validation_size",
+        const=0.3,
+        default=0.3,
+        nargs="?",
+        type=float,
+        help="Float in (0,1) representing the percentage of sample to be kept for validation",
+    )
+
+    parser.add_argument(
+        "--seed",
+        const=42,
+        default=42,
+        nargs="?",
+        type=int,
+        help="Integer representing the seed used in train/test/validation splitting",
+    )
+
+    parser.add_argument(
+        "--filters",
+        const=(4, 8, 16, 32, 64, 128, 256),
+        default=(4, 8, 16, 32, 64, 128, 256),
+        nargs="?",
+        type=tuple,
+        help="Filters to apply in CNN",
+    )
+
     # Parse arguments
     args = parser.parse_args()
 
