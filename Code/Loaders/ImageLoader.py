@@ -21,7 +21,6 @@ class ImageLoader(Sequence):
         batch_size=32,
         maximum=None,
         minimum=None,
-        feature=None,
     ):
 
         """Constructor for ImageLoader class"""
@@ -49,7 +48,6 @@ class ImageLoader(Sequence):
         self.number = len(data_paths)
         self.names = [Path(path).stem for path in self.data_paths]
         self.set_type = set_type
-        self.feature = feature
 
         self.set_shape()
 
@@ -72,12 +70,6 @@ class ImageLoader(Sequence):
         # Find paths for the i-th batch
         data_batch = self.data[i * self.batch_size : (i + 1) * self.batch_size]
         label_batch = self.labels[i * self.batch_size : (i + 1) * self.batch_size]
-
-        # Restrict to particular feature (yaml case)
-        if self.feature != None:
-            label_batch = [label.label[self.feature] for label in label_batch]
-        else:
-            label_batch = [label.label for label in label_batch]
 
         # Normalise images
         normalised_images = [
@@ -137,7 +129,6 @@ class ImageLoader(Sequence):
             self.batch_size,
             self.maximum,
             self.minimum,
-            self.feature,
         )
 
         return dataset
