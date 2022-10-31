@@ -1,6 +1,6 @@
 from glob import glob
 from sklearn.model_selection import train_test_split
-from Code.Loader.ImageLoader import ImageLoader
+from Code.Loaders.ImageLoader import ImageLoader
 
 
 def split(args, feature):
