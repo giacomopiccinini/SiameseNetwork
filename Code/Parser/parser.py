@@ -82,7 +82,6 @@ def parse():
         help="Integer for y-dimension of  pooling kernel",
     )
 
-
     # Parse arguments
     args = parser.parse_args()
 

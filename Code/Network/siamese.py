@@ -7,7 +7,7 @@ from Code.Network.sister import SisterNetwork
 from Code.Metrics.euclidean import euclidean_distance
 
 
-def SiameseNetwork(shape_y :int, shape_x :int, colours: int, latent: int):
+def SiameseNetwork(shape_y: int, shape_x: int, colours: int, latent: int):
 
     """Siamese network implementation based on a feature extractor defined as the
     Sister Network"""
