@@ -1,4 +1,0 @@
-# Specify the shape of the inputs for our network
-SHAPE_Y: 28
-SHAPE_X: 28
-COLOURS: 1
