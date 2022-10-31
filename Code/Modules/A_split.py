@@ -38,10 +38,7 @@ def split(args):
 
     # Initialise datasets
     train_set = ImageLoader(
-        images_train,
-        labels_train,
-        set_type="train",
-        batch_size=args.batch
+        images_train, labels_train, set_type="train", batch_size=args.batch
     )
     validation_set = ImageLoader(
         images_validation,
@@ -49,7 +46,7 @@ def split(args):
         set_type="validation",
         batch_size=args.batch,
         maximum=train_set.maximum,
-        minimum=train_set.minimum
+        minimum=train_set.minimum,
     )
     test_set = ImageLoader(
         images_test,
@@ -57,7 +54,7 @@ def split(args):
         set_type="test",
         batch_size=args.batch,
         maximum=train_set.maximum,
-        minimum=train_set.minimum
+        minimum=train_set.minimum,
     )
 
     # Save splitting in .yaml files
