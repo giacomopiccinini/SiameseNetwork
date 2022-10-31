@@ -9,8 +9,8 @@ from Code.Metrics.euclidean import euclidean_distance
 
 def SiameseNetwork():
 
-    """ Siamese network implementation based on a feature extractor defined as the 
-    Sister Network """
+    """Siamese network implementation based on a feature extractor defined as the
+    Sister Network"""
 
     # Construct shape of input images
     IMG_SHAPE = (SHAPE_Y, SHAPE_X, COLOURS)

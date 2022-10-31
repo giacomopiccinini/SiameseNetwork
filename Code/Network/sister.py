@@ -9,12 +9,21 @@ from tensorflow.keras.layers import BatchNormalization
 from tensorflow.keras.layers import Flatten
 
 
-def SisterNetwork(shape, filters=(4, 8, 16, 32, 64, 128), latent = 64):
+def SisterNetwork(
+    shape,
+    kernel_size_x=3,
+    kernel_size_y=3,
+    pool_size_x=3,
+    pool_size_y=3,
+    dropout=0.2,
+    filters=(4, 8, 16, 32, 64, 128),
+    latent=64,
+):
 
-    """ Sister network used for feature extraction from images. It is basically
-    just a CNN """
+    """Sister network used for feature extraction from images. It is basically
+    just a CNN"""
 
-        # Instantiate a Keras tensor (it should be a n_xpixel x n_ypixel x n_channel tensor)
+    # Instantiate a Keras tensor (it should be a n_xpixel x n_ypixel x n_channel tensor)
     input = Input(shape=shape)
 
     # At first, the tensor is simply the input
@@ -24,16 +33,21 @@ def SisterNetwork(shape, filters=(4, 8, 16, 32, 64, 128), latent = 64):
     for f in filters:
 
         # Apply 2D convolution with ReLU activation function
-        x = Conv2D(f, kernel_size=(3, 3), activation="relu", padding="same")(x)
+        x = Conv2D(
+            f,
+            kernel_size=(kernel_size_y, kernel_size_x),
+            activation="relu",
+            padding="same",
+        )(x)
 
         # Apply batch normalisation (specify axis = -1 if assuming TensorFlow/channels-last ordering)
         x = BatchNormalization(axis=-1)(x)
 
         # Apply Max Pooling
-        x = MaxPooling2D(pool_size=(2, 2))(x)
+        x = MaxPooling2D(pool_size=(pool_size_y, pool_size_x))(x)
 
     # Add drop-out layer
-    x = Dropout(0.2)(x)
+    x = Dropout(dropout)(x)
 
     # Global average pooling
     x = GlobalAveragePooling2D()(x)
