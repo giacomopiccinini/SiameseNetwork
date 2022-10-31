@@ -3,21 +3,14 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Input
 from tensorflow.keras.layers import Lambda
 
-from Code.Utilities.loading_utils import load
-from Code.Networks.Architectures.architectures import sister_network
+from Code.Networks.Architectures.architectures import SisterNetwork
 from Code.Networks.Distances.euclidean import euclidean_distance
 
 
 def SiameseNetwork():
 
-    # Import configuration
-    train_configuration = load("train_configuration.yaml")
-    image_configuration = load("image_configuration.yaml")
-    siamese_configuration = load("siamese_configuration.yaml")
-
-    globals().update(train_configuration)
-    globals().update(image_configuration)
-    globals().update(siamese_configuration)
+    """ Siamese network implementation based on a feature extractor defined as the 
+    Sister Network """
 
     # Construct shape of input images
     IMG_SHAPE = (SHAPE_Y, SHAPE_X, COLOURS)
@@ -27,7 +20,7 @@ def SiameseNetwork():
     image_2 = Input(shape=IMG_SHAPE)
 
     # Define the feature extractor (i.e. the sister network)
-    feature_extractor = sister_network(IMG_SHAPE, LATENT)
+    feature_extractor = SisterNetwork(IMG_SHAPE, LATENT)
 
     # Extract features from the two input images
     features_1 = feature_extractor(image_1)

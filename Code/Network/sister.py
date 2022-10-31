@@ -7,7 +7,7 @@ from tensorflow.keras.layers import GlobalAveragePooling2D
 from tensorflow.keras.layers import MaxPooling2D
 
 
-def sister_network(input_shape, latent_dim):
+def SisterNetwork(input_shape, latent_dim):
 
     # Specify the inputs for the feature extractor network
     inputs = Input(input_shape)
