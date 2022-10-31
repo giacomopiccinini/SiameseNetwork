@@ -7,20 +7,20 @@ from Code.Network.sister import SisterNetwork
 from Code.Metrics.euclidean import euclidean_distance
 
 
-def SiameseNetwork():
+def SiameseNetwork(shape_y :int, shape_x :int, colours: int, latent: int):
 
     """Siamese network implementation based on a feature extractor defined as the
     Sister Network"""
 
     # Construct shape of input images
-    IMG_SHAPE = (SHAPE_Y, SHAPE_X, COLOURS)
+    image_shape = (shape_y, shape_x, colours)
 
     # Define the inputs of the network
-    image_1 = Input(shape=IMG_SHAPE)
-    image_2 = Input(shape=IMG_SHAPE)
+    image_1 = Input(shape=image_shape)
+    image_2 = Input(shape=image_shape)
 
     # Define the feature extractor (i.e. the sister network)
-    feature_extractor = SisterNetwork(IMG_SHAPE, LATENT)
+    feature_extractor = SisterNetwork(image_shape, latent)
 
     # Extract features from the two input images
     features_1 = feature_extractor(image_1)
