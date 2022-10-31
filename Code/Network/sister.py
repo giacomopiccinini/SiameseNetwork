@@ -30,4 +30,3 @@ def sister_network(input_shape, latent_dim):
     sister_net = Model(inputs, outputs)
 
     return sister_net
-

@@ -7,6 +7,7 @@ from Code.Utilities.loading_utils import load
 from Code.Networks.Architectures.architectures import sister_network
 from Code.Networks.Distances.euclidean import euclidean_distance
 
+
 def SiameseNetwork():
 
     # Import configuration
@@ -22,8 +23,8 @@ def SiameseNetwork():
     IMG_SHAPE = (SHAPE_Y, SHAPE_X, COLOURS)
 
     # Define the inputs of the network
-    image_1 = Input(shape = IMG_SHAPE)
-    image_2 = Input(shape = IMG_SHAPE)
+    image_1 = Input(shape=IMG_SHAPE)
+    image_2 = Input(shape=IMG_SHAPE)
 
     # Define the feature extractor (i.e. the sister network)
     feature_extractor = sister_network(IMG_SHAPE, LATENT)
@@ -36,9 +37,9 @@ def SiameseNetwork():
     distance = Lambda(euclidean_distance)([features_1, features_2])
 
     # Pass the distance in a dense layer with sigmoid activation
-    outputs = Dense(1, activation = "sigmoid")(distance)
+    outputs = Dense(1, activation="sigmoid")(distance)
 
     # Construct the model
-    model = Model(inputs = [image_1, image_2], outputs = outputs)
+    model = Model(inputs=[image_1, image_2], outputs=outputs)
 
     return model

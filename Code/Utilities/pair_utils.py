@@ -3,7 +3,7 @@ import numpy as np
 
 def make_pairs(images, labels):
 
-    """ Pair images and labels"""
+    """Pair images and labels"""
 
     # Initialize two empty lists to hold the (image, image) pairs and
     # labels to indicate if a pair is positive or negative
