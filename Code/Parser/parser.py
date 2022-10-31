@@ -36,6 +36,15 @@ def parse():
         type=int,
         help="Integer for training epochs"
     )
+
+    parser.add_argument(
+        "--dropout",
+        const=0.2,
+        default=0.2,
+        nargs="?",
+        type=float,
+        help="Float for dropout percentage at the end of feature extractor network"
+    )
    
     # Parse arguments
     args = parser.parse_args()
