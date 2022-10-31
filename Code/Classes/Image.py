@@ -1,10 +1,7 @@
 import cv2
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
-
 from pathlib import Path
-from scipy.ndimage import label
 
 
 class Image:
@@ -94,7 +91,6 @@ class Image:
         """Return unique values in an image"""
 
         return np.unique(self.tensor, return_counts=return_counts)
-
 
     def plot(self, y_min=None, y_max=None, x_min=None, x_max=None):
 
