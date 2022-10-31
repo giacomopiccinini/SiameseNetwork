@@ -1,9 +1,9 @@
 from glob import glob
 from sklearn.model_selection import train_test_split
-from Code.Loaders.ImageLoader import ImageLoader
+from Code.Loader.ImageLoader import ImageLoader
 
 
-def split(args, feature):
+def split(args):
 
     """Split dataset into train, test and validation.
 
@@ -41,8 +41,7 @@ def split(args, feature):
         images_train,
         labels_train,
         set_type="train",
-        batch_size=args.batch,
-        feature=feature,
+        batch_size=args.batch
     )
     validation_set = ImageLoader(
         images_validation,
@@ -50,8 +49,7 @@ def split(args, feature):
         set_type="validation",
         batch_size=args.batch,
         maximum=train_set.maximum,
-        minimum=train_set.minimum,
-        feature=feature,
+        minimum=train_set.minimum
     )
     test_set = ImageLoader(
         images_test,
@@ -59,8 +57,7 @@ def split(args, feature):
         set_type="test",
         batch_size=args.batch,
         maximum=train_set.maximum,
-        minimum=train_set.minimum,
-        feature=feature,
+        minimum=train_set.minimum
     )
 
     # Save splitting in .yaml files
