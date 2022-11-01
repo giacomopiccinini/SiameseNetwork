@@ -51,7 +51,7 @@ class Metric:
         self.accuracy = (TP + TN) / (TP + TN + FP + FN)
         self.precision = TP / (TP + FP)
         self.recall = TP / (TP + FN)
-        self.f1 = 1 / (1 / self.precision + 1 / self.recall)
+        self.f1 = 2 / (1 / self.precision + 1 / self.recall)
 
     def evaluate(self):
 
