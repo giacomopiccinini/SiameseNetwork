@@ -17,10 +17,13 @@ class Metric:
 
         self.y_pred = np.clip(self.y_pred, 1e-7, 1 - 1e-7)
 
+        # Compute first term
         term_0 = (1-self.y_truth) * np.log(1-self.y_pred + 1e-7)
 
-        term_1 = self.y_trueth* np.log(self.y_pred + 1e-7)
+        # Compute second term
+        term_1 = self.y_truth* np.log(self.y_pred + 1e-7)
 
+        # Compute total cross entropy
         self.binary_crossentropy = -np.mean(term_0+term_1, axis=0)
 
     def evaluate(self):
