@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
-from Code.Metrics.Metric import Metric
+from Code.Metric.Metric import Metric
 
 
-def test(Siamese, experiment, test_set):
+def test(Siamese, experiment, paired_test_images, paired_test_labels):
 
     # Load best model
     Siamese.load_weights(f"Output/{experiment.get_name()}/Checkpoints/model.hdf5")
@@ -11,13 +11,13 @@ def test(Siamese, experiment, test_set):
     with experiment.test():
 
         # Get ground truth
-        y_truth = np.array([label.label for label in test_set.labels])
+        y_truth = paired_test_labels.reshape(-1)
 
         # Predict values
-        y_pred = Siamese.predict(test_set).reshape(-1)
+        y_pred = Siamese.predict(paired_test_images).reshape(-1)
 
         # Instantiate metric object
-        metric = Metric(y_truth=y_truth, y_pred=y_pred, regress=True)
+        metric = Metric(y_truth=y_truth, y_pred=y_pred)
 
         # Evaluate metrics
         metrics = metric.evaluate()
