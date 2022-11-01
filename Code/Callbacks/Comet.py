@@ -16,4 +16,3 @@ class Comet(Callback):
         # Log losses
         self.experiment.log_metric("val_loss", logs.get("val_loss"), step=epoch)
         self.experiment.log_metric("train_loss", logs.get("loss"), step=epoch)
-        self.experiment.log_metric("val_mse", logs.get("val_mse"), step=epoch)
