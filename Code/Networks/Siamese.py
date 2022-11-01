@@ -1,3 +1,4 @@
+from tracemalloc import _TraceTuple
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Input
@@ -7,7 +8,18 @@ from Code.Networks.Sister import SisterNetwork
 from Code.Metrics.euclidean import euclidean_distance
 
 
-def SiameseNetwork(shape_y: int, shape_x: int, colours: int, latent: int):
+def SiameseNetwork(
+    shape_y: int,
+    shape_x: int,
+    colours: int,
+    latent: int,
+    kernel_size_x: int,
+    kernel_size_y: int,
+    pool_size_x: int,
+    pool_size_y: int,
+    dropout: float,
+    filters: tuple,
+):
 
     """Siamese network implementation based on a feature extractor defined as the
     Sister Network"""
@@ -20,7 +32,16 @@ def SiameseNetwork(shape_y: int, shape_x: int, colours: int, latent: int):
     image_2 = Input(shape=image_shape)
 
     # Define the feature extractor (i.e. the sister network)
-    feature_extractor = SisterNetwork(image_shape, latent)
+    feature_extractor = SisterNetwork(
+        shape=image_shape,
+        kernel_size_x=kernel_size_x,
+        kernel_size_y=kernel_size_y,
+        pool_size_x=pool_size_x,
+        pool_size_y=pool_size_y,
+        dropout=dropout,
+        filters=filters,
+        latent=latent,
+    )
 
     # Extract features from the two input images
     features_1 = feature_extractor(image_1)

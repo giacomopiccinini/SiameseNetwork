@@ -23,7 +23,7 @@ def SisterNetwork(
     """Sister network used for feature extraction from images. It is basically
     just a CNN"""
 
-    # Instantiate a Keras tensor (it should be a n_xpixel x n_ypixel x n_channel tensor)
+    # Instantiate a Keras tensor (it should be a n_x pixel x n_y pixel x n_channel tensor)
     input = Input(shape=shape)
 
     # At first, the tensor is simply the input

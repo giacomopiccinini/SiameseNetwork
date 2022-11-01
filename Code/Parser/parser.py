@@ -154,7 +154,6 @@ def parse():
         help="Integer for latent space dimension",
     )
 
-
     # Add group for Adam
     adam_group = parser.add_argument_group("Adam", "Arguments for Adam optimizer")
 
@@ -209,7 +208,6 @@ def parse():
         type=int,
         help="Integer for training epochs",
     )
-    
 
     # Parse arguments
     args = parser.parse_args()

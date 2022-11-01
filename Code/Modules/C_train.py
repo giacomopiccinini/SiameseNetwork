@@ -7,7 +7,7 @@ from Code.Callbacks.callback import list_callbacks
 
 def train(Siamese, train_set, validation_set, args):
 
-    """Train CNN"""
+    """Train Siamese"""
     # Ensure GPU is visible
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
