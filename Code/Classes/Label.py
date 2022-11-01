@@ -8,4 +8,3 @@ class Label:
 
         self.image = image
         self.label = label
-
