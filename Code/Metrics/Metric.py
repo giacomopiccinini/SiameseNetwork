@@ -21,7 +21,7 @@ class Metric:
 
         term_1 = self.y_trueth* np.log(self.y_pred + 1e-7)
 
-        return -np.mean(term_0+term_1, axis=0)
+        self.binary_crossentropy = -np.mean(term_0+term_1, axis=0)
 
     def evaluate(self):
 
