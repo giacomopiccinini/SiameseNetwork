@@ -1,4 +1,3 @@
-from tracemalloc import _TraceTuple
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Input
