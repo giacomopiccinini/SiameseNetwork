@@ -28,6 +28,9 @@ def test(Siamese, experiment, paired_test_images, paired_test_labels):
         # End experiment
         experiment.end()
 
+        # Clip y_pred
+        y_pred = np.where(y_pred > 0.5, 1, 0)
+
         # Create pandas data frame
         df = pd.DataFrame({"Ground Truth": y_truth, "Prediction": y_pred})
 
