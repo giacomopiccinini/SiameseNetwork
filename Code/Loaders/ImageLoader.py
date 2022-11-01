@@ -64,7 +64,9 @@ class ImageLoader(Sequence):
 
         # Find paths for the i-th batch
         data_batch = self.data[i * self.batch_size : (i + 1) * self.batch_size]
-        label_batch = self.labels[i * self.batch_size : (i + 1) * self.batch_size]
+        #label_batch = self.labels[i * self.batch_size : (i + 1) * self.batch_size]
+        label_batch = [self.labels[n].label for n in range(i * self.batch_size, (i + 1) * self.batch_size)]
+
 
         # Normalise images
         normalised_images = [
