@@ -16,7 +16,7 @@ class ImageLoader(Sequence):
     def __init__(
         self,
         data_paths,
-        label_paths,
+        labels,
         set_type="train",
         batch_size=32,
         maximum=None,
@@ -34,12 +34,8 @@ class ImageLoader(Sequence):
         # Close pool
         pool.close()
 
-        # Load labels
-        labels = np.array([Label(label_path) for label_path in label_paths])
-
         # Store details
         self.data_paths = np.array(data_paths)
-        self.label_paths = np.array(label_paths)
 
         self.data = data
         self.labels = labels
@@ -124,7 +120,6 @@ class ImageLoader(Sequence):
 
         dataset = ImageLoader(
             self.data_paths[indices],
-            self.label_paths[indices],
             self.set_type,
             self.batch_size,
             self.maximum,
