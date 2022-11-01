@@ -5,7 +5,14 @@ from Code.CometML.track_experiment import track
 from Code.Callbacks.callback import list_callbacks
 
 
-def train(Siamese, train_set, validation_set, args):
+def train(
+    Siamese,
+    paired_train_images,
+    paired_train_labels,
+    paired_validation_images,
+    paired_validation_labels,
+    args,
+):
 
     """Train Siamese"""
     # Ensure GPU is visible
@@ -35,8 +42,9 @@ def train(Siamese, train_set, validation_set, args):
 
     # Train CNN
     Siamese.fit(
-        train_set,
-        validation_data=validation_set,
+        x=paired_train_images,
+        y=paired_train_labels,
+        validation_data=(paired_validation_images, paired_validation_labels),
         epochs=args["Train"].epochs,
         callbacks=callbacks,
     )
