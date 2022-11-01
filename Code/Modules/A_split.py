@@ -1,6 +1,7 @@
-from glob import glob
+import pandas as pd
 from sklearn.model_selection import train_test_split
 from Code.Loaders.ImageLoader import ImageLoader
+from Code.Classes.Label import Label
 
 
 def split(args):
@@ -15,17 +16,18 @@ def split(args):
 
     """
 
-    # Retrieve images
-    images = glob("Input/Images/*.jpg")
+    # Read from Excel file containing labels and images names
+    df = pd.read_excel("Input/Labels/labels.xlsx")
+
+    # Create paths to data
+    image_paths = [f"Input/Images/{image}" for image in df["Image"]]
 
     # Retrieve labels
-    labels = [
-        image.replace("Images", "Labels").replace("jpg", "yaml") for image in images
-    ]
+    labels = list(map(Label, df["Image"], df["Label"]))
 
     # Separate test and train set
     images_train, images_test, labels_train, labels_test = train_test_split(
-        images, labels, test_size=args.test_size, random_state=args.seed
+        image_paths, labels, test_size=args.test_size, random_state=args.seed
     )
 
     # Separate train and validation set
@@ -40,6 +42,7 @@ def split(args):
     train_set = ImageLoader(
         images_train, labels_train, set_type="train", batch_size=args.batch
     )
+
     validation_set = ImageLoader(
         images_validation,
         labels_validation,
@@ -48,6 +51,7 @@ def split(args):
         maximum=train_set.maximum,
         minimum=train_set.minimum,
     )
+    
     test_set = ImageLoader(
         images_test,
         labels_test,
