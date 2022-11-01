@@ -9,9 +9,7 @@ from Code.Metrics.euclidean import euclidean_distance
 
 
 def SiameseNetwork(
-    shape_y: int,
-    shape_x: int,
-    colours: int,
+    shape: tuple,
     latent: int,
     kernel_size_x: int,
     kernel_size_y: int,
@@ -25,7 +23,7 @@ def SiameseNetwork(
     Sister Network"""
 
     # Construct shape of input images
-    image_shape = (shape_y, shape_x, colours)
+    image_shape = shape
 
     # Define the inputs of the network
     image_1 = Input(shape=image_shape)
