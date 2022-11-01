@@ -51,7 +51,7 @@ def split(args):
         maximum=train_set.maximum,
         minimum=train_set.minimum,
     )
-    
+
     test_set = ImageLoader(
         images_test,
         labels_test,
