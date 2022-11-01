@@ -96,9 +96,7 @@ def parse():
     prepare_group.add_argument(
         "--filters",
         const=(4, 8),
-        default=(4,8),
-        #const=(4, 8, 16, 32, 64, 128, 256),
-        #default=(4, 8, 16, 32, 64, 128, 256),
+        default=(4, 8),
         nargs="?",
         type=tuple,
         help="Filters to apply in feature extractor",
