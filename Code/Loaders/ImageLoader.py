@@ -64,9 +64,12 @@ class ImageLoader(Sequence):
 
         # Find paths for the i-th batch
         data_batch = self.data[i * self.batch_size : (i + 1) * self.batch_size]
-        #label_batch = self.labels[i * self.batch_size : (i + 1) * self.batch_size]
-        label_batch = [self.labels[n].label for n in range(i * self.batch_size, (i + 1) * self.batch_size)]
-
+        label_batch = np.array(
+            [
+                self.labels[n].label
+                for n in range(i * self.batch_size, (i + 1) * self.batch_size)
+            ]
+        )
 
         # Normalise images
         normalised_images = [
@@ -84,7 +87,7 @@ class ImageLoader(Sequence):
 
         """Check that all images in dataset have the same shape. If not, raise an error"""
 
-        # Retrieve shapes (specify that it should be a numpy array of tuples) 
+        # Retrieve shapes (specify that it should be a numpy array of tuples)
         shapes = np.array([tensor.shape for tensor in list(self.data)], dtype="i,i")
 
         # Check unicity
