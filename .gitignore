@@ -7,4 +7,6 @@ __pycache__/
 *.csv
 *.ipynb
 venv/
-
+.comet.config
+Logs/
+Output/*
