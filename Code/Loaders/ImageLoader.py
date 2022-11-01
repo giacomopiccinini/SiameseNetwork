@@ -6,7 +6,6 @@ from pathlib import Path
 from tensorflow.keras.utils import Sequence
 
 from Code.Classes.Image import Image
-from Code.Classes.Label import Label
 
 
 class ImageLoader(Sequence):
@@ -83,8 +82,8 @@ class ImageLoader(Sequence):
 
         """Check that all images in dataset have the same shape. If not, raise an error"""
 
-        # Retrieve shapes
-        shapes = np.array([tensor.shape for tensor in list(self.data)])
+        # Retrieve shapes (specify that it should be a numpy array of tuples) 
+        shapes = np.array([tensor.shape for tensor in list(self.data)], dtype="i,i")
 
         # Check unicity
         shape = np.unique(shapes)
@@ -94,7 +93,7 @@ class ImageLoader(Sequence):
 
             raise ValueError("Images in dataset do not have the same shape")
 
-        self.shape = shape
+        self.shape = shape[0]
 
     def get_extrema(self):
 
