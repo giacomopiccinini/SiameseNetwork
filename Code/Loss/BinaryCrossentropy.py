@@ -11,7 +11,7 @@ def loss(**kwargs):
         Loss = BinaryCrossentropy(**kwargs)
 
         # Log the loading
-        logging.info("Mean Absolute Error loss has been loaded")
+        logging.info("Binary Crossentropy loss has been loaded")
 
         # Return the optimizer
         return Loss
