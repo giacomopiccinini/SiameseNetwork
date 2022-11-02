@@ -1,10 +1,17 @@
 import logging
 
-from Code.Parser.parser import parse
+logging.getLogger("everett").setLevel(logging.ERROR)
+logging.getLogger("requests").setLevel(logging.ERROR)
+logging.getLogger("urllib3").setLevel(logging.ERROR)
+logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
 import os
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+
+import comet_ml
+
+from Code.Parser.parser import parse
 
 from Code.Modules.A_split import split
 from Code.Modules.B_prepare import prepare
